@@ -1,0 +1,34 @@
+[package]
+name = "sshd-pqc"
+version = "0.1.0"
+edition = "2021"
+authors = ["Matt Gates <suhteevah@users.noreply.github.com>"]
+description = "no_std post-quantum SSH daemon with ML-KEM-768 + X25519 hybrid key exchange"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/suhteevah/sshd-pqc"
+keywords = ["ssh", "post-quantum", "kyber", "no_std", "bare-metal"]
+categories = ["no-std", "network-programming", "cryptography"]
+readme = "README.md"
+
+[dependencies]
+log = { version = "0.4", default-features = false }
+spin = { version = "0.9", default-features = false }
+
+# Post-quantum KEM
+ml-kem = { version = "0.2", default-features = false }
+# Post-quantum signatures
+ml-dsa = { version = "0.1.0-rc.8", default-features = false }
+
+# Classical crypto
+x25519-dalek = { version = "2", default-features = false }
+ed25519-dalek = { version = "2", default-features = false, features = ["alloc"] }
+
+# AEAD cipher
+chacha20poly1305 = { version = "0.10", default-features = false, features = ["alloc"] }
+
+# Hashing / MAC
+sha2 = { version = "0.10", default-features = false }
+hmac = { version = "0.12", default-features = false }
+
+# RNG
+rand_core = { version = "0.6", default-features = false }
